@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.login-wrapper{
+}
+
+.amazon-logo{
+    height: 100px;
+    background: none;
+}
+.login-form{
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 20px 26px;
+    display: block;
+}
+
+.login-form >h1{
+    font-family: Arial,sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+}
+.login-form > label{
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-weight: 700;
+}
