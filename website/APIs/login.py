@@ -59,11 +59,13 @@ def login_logic(auth_email = None,auth_password = None):
         user = cursor.fetchone()
         if user:
             Us = load_user(user[0])
-            if email == Us.email and password == Us.password:
+            if  password == Us.password:
                 login_user(Us)
                 return redirect(url_for('root.home'))
             else:
-                flash('Login Failed check your username and password','danger')
+                flash('Your password is incorrect','danger')
+        else:
+            flash("Check your email", 'danger')
     if auth_email and auth_password:
         db = conn_db()
         cursor = db.cursor()

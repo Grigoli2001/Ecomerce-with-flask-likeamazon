@@ -1,31 +1,125 @@
-.container{
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  justify-content: center;
 }
 
-.login-wrapper{
+.login-wrapper {
+}
+.logo-div {
+  text-align: center;
+}
+.amazon-logo {
+  height: 100px;
+  background: none;
+}
+.login-form {
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 8px;
+  padding-top: 20px;
+  padding-left: 26px;
+  padding-right: 36px;
+  display: block;
+  width: 300px;
 }
 
-.amazon-logo{
-    height: 100px;
-    background: none;
+.login-form > h1 {
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
 }
-.login-form{
-    border: 1px solid gray;
-    border-radius: 8px;
-    padding: 20px 26px;
-    display: block;
+.login-form > label {
+  display: block;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
 }
-
-.login-form >h1{
-    font-family: Arial,sans-serif;
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 1.2;
+.login-inp {
+  margin: 0;
+  width: 100%;
+  height: 30px;
+  color: #0f1111;
+  padding: 3px 7px;
+  line-height: normal;
+  margin-bottom: 10px;
 }
-.login-form > label{
-    display: block;
-    padding-left: 2px;
-    padding-bottom: 2px;
-    font-weight: 700;
+.sec {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.login-submit {
+  margin-top: 20px;
+  width: 106%;
+  color: #0f1111;
+  cursor: pointer;
+  border: none;
+  /* background-color: #f3d078;
+  background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b); */
+  background: #ffd814;
+  border-color: #fcd200;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none !important;
+  vertical-align: middle;
+  height: 30px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+.login-submit:hover {
+  background: #f1cd19;
+  border-color: #e4be00;
+  box-shadow: 0 2px 5px 0 rgba(191, 196, 196, 0.5);
+}
+.new-user-wrapper {
+  width: 106%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.blank {
+  flex: 1;
+  height: 0;
+  justify-self: center;
+  border: 1px solid rgb(211, 211, 211);
+}
+.text {
+  color: rgb(114, 114, 114);
+  flex: 1.5;
+  text-align: center;
+}
+.register-btn > button {
+  width: 106%;
+  background-color: aliceblue;
+  color: #0f1111;
+  text-decoration: none !important;
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  margin: 0;
+  outline: 0;
+  padding: 0 10px 0 11px;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+  border: 1px solid #d5d9d9;
+  margin-bottom: 20px;
+}
+.register-btn > button:hover {
+  background: #f0f0f0;
+  cursor: pointer;
 }

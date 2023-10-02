@@ -17,20 +17,23 @@
     <div class="container">
       <div class="login-wrapper">
         <div class="logo-div">
-
-          <img class="amazon-logo" src="{{url_for('static', filename = 'assets/amazon.png')}}" alt="">
+          <img
+            class="amazon-logo"
+            src="{{url_for('static', filename = 'assets/amazon.png')}}"
+            alt=""
+          />
         </div>
         <form method="post" class="login-form">
           <h1>Sign in</h1>
           {{ form.hidden_tag() }}
-          <label for="email">Email:</label>
-          {{ form.email(class="reg-inp", placeholder="Email@gmail.com") }} {%
+          <label for="email">Email</label>
+          {{ form.email(class="login-inp", placeholder="Email@gmail.com") }} {%
           for error in form.email.errors %}
           <span>{{ error }}</span>
           {% endfor %}
-          <label for="password">Password:</label>
-          {{ form.password(class="reg-inp", placeholder="********") }} {% for
-          error in form.password.errors %}
+          <label for="password">Password</label>
+          {{ form.password(class="login-inp sec", placeholder="********") }} {%
+          for error in form.password.errors %}
           <span>{{ error }}</span>
           {% endfor %} {% with messages = get_flashed_messages() %} {% if
           messages %}
@@ -39,7 +42,18 @@
             <div class="flash-message">{{ message }}</div>
             {% endfor %}
           </div>
-          {% endif %} {% endwith %} {{form.submit(class='reg-submit')}}
+          {% endif %} {% endwith %} {{form.submit(class='login-submit')}}
+          <div class="new-user-wrapper">
+            <!--            Don't have an account?-->
+            <div class="blank"></div>
+            <div class="text"><span>New to Amazon?</span></div>
+            <div class="blank"></div>
+          </div>
+          <div class="register-btn">
+            <button onclick="location.assign('/register')">
+              Create your Amazon account
+            </button>
+          </div>
         </form>
       </div>
     </div>
