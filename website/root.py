@@ -14,6 +14,8 @@ root = Blueprint('root',__name__)
 
 @root.route('/')
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for("root.home"))
     return render_template('welcome.html')
 def conn_db():
     db = getattr(g,'_database',None)
@@ -37,7 +39,6 @@ def create_user_table(db):
             username TEXT NOT NULL,
             email TEXT NOT NULL UNIQUE,
             password text NOT NULL,
-            profile_pic_path text,
             fullname text
         )
     ''')
@@ -58,3 +59,8 @@ def show_users():
 @login_required
 def home():
     return render_template('home.html')
+@root.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('root.index'))

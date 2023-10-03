@@ -1,0 +1,177 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+}
+nav {
+  background-color: #131921;
+  height: 60px;
+  display: flex;
+}
+.logo {
+  text-align: center;
+  flex: 1;
+  align-self: center;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo:hover {
+  cursor: pointer;
+  border: 2px solid gray;
+}
+.amazon-logo {
+  height: 30px;
+}
+.location {
+  margin-left: 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.loc-icon {
+  margin-right: 5px;
+}
+.loc {
+  color: white;
+}
+.address {
+  display: block;
+}
+.address > span {
+  color: white;
+}
+.address > p {
+  color: white;
+  margin: 0;
+}
+.search {
+  width: 100%;
+  height: 40px;
+  flex: 7;
+  display: flex;
+  align-self: center;
+}
+.search-form {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+.search-inp {
+  margin: 0;
+  width: 100%;
+  border: none;
+  padding: 0 10px;
+  font-size: medium;
+}
+.search-inp:focus {
+  outline: none !important ;
+  text-decoration: none;
+}
+.search-form > button {
+  border: none;
+  width: 7%;
+  font-size: larger;
+  background-color: #febd69;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.search > select {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 8%;
+  text-align: center;
+  height: 100%;
+  border: none;
+  background-color: #e6e6e6;
+}
+.search > select > option {
+  width: auto;
+}
+.lang {
+  display: flex;
+  flex: 1;
+  color: white;
+  place-items: center;
+  justify-content: center;
+}
+.lang > img {
+  width: 25px;
+  height: 16px;
+  margin-right: 5px;
+}
+.account {
+  flex: 1.2;
+  color: white;
+  align-self: center;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.account:hover{
+    cursor: pointer;
+  border: 2px solid gray;
+}
+.cart {
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+  flex: 1;
+  display: flex;
+  cursor: pointer;
+}
+.cart:hover{
+    cursor: pointer;
+  border: 2px solid gray;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  align-self: center;
+}
+.icon > p {
+  position: absolute;
+  margin: 0;
+  color: rgb(255, 119, 1);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 3px;
+  padding-left: 4px;
+}
+.cart > p {
+  color: white;
+  margin: 0;
+  text-align: center;
+  text-align: center;
+  align-self: center;
+  margin-left: 10px;
+}
+.shoppingcart {
+  color: white;
+  font-size: xx-large;
+}
+.bellow-nav{
+    height: 40px;
+    background-color: #232f3e;
+    display: flex;
+    color: white;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.bellow-nav>div{
+    margin-right: 10px;
+}
+.bellow-nav>div:hover{
+    cursor:pointer ;
+    color: cadetblue;
+}
+.all>i{
+    margin-right: 5px;
+}

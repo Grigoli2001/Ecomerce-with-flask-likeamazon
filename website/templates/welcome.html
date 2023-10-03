@@ -3,10 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='style/home.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <title>Amazon</title>
   </head>
   <body>
-    <a href="/login">login</a>
-    <a href="/register">register</a>
+    <nav>
+    
+      <div onclick="location.assign('/')" class="logo">
+        <img
+          class="amazon-logo"
+          src="{{ url_for('static', filename = 'assets/amazon1.png') }}"
+          alt=""
+        />
+      </div>
+      <div class="location">
+        <div class="loc-icon"><i class="fas fa-map-marker-alt loc"></i></div>
+        <div class="address">
+          <span style="color: rgb(158, 157, 157); font-size: small"
+            >Deliver to</span
+          >
+          <p>France</p>
+        </div>
+      </div>
+      <div class="search">
+        <select name="category" id="">
+          <option value="All">All</option>
+          <option value="Tech">Tech</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+        <form action="" class="search-form">
+          <input class="search-inp" type="search" name="search" id="" />
+          <button><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+      <div class="lang">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/US_flag_51_stars.svg/2560px-US_flag_51_stars.svg.png"
+          alt=""
+        /><span>EN</span>
+      </div>
+      <div onclick="location.assign('/login')" class="account"><span>Sign in & Register</span></div>
+      <div class="cart">
+        <div class="icon">
+          <p>0</p>
+          <i class="fas fa-shopping-cart shoppingcart"></i>
+        </div>
+        <p>Cart</p>
+      </div>
+    </nav>
+    <div class="bellow-nav">
+        <div class="all"><i class="fas fa-bars"></i>All</div>
+        <div class="todays-deals">Today's Deals</div>
+        <div class="customer-service">Customer Service</div>
+        <div class="registry">Registry</div>
+        <div class="gift-cards">Gift Cards</div>
+        <div class="sell">Sell</div>
+    </div>
+
   </body>
 </html>

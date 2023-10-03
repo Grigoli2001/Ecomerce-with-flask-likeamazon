@@ -13,7 +13,6 @@ class User(UserMixin):
         self.email = None
         self.password = None    
         self.authenticated = False
-        self.profile_pic = None
         self.fullname = None
     def is_active(self):
          return self.is_active()
@@ -39,8 +38,7 @@ def load_user(user_id):
         cur_user.username = user[1]
         cur_user.email = user[2]
         cur_user.password = user[3]
-        cur_user.profile_pic = user[4]
-        cur_user.fullname = user[5]
+        cur_user.fullname = user[4]
         return cur_user
 
     return None  # Return None if no user is found
@@ -75,7 +73,7 @@ def login_logic(auth_email = None,auth_password = None):
             Us = load_user(user[0])
             if auth_email == Us.email and auth_password == Us.password:
                 login_user(Us)
-                return redirect(url_for('root.home'))
+                return redirect(url_for('root.index'))
             else:
                 flash('Login Failed check your username and password','danger')
 
