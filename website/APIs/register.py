@@ -11,7 +11,9 @@ register = Blueprint('register',__name__)
 @register.route('/', methods = ['GET','POST'])
 def add_user_form():
     if current_user.is_authenticated:
-         return redirect(url_for('root.home'))
+        print("authenticated")
+        return redirect(url_for('root.home'))
+        
     form = RegistrationForm()
     if form.validate_on_submit():
         username = form.username.data

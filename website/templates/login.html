@@ -18,6 +18,8 @@
       <div class="login-wrapper">
         <div class="logo-div">
           <img
+          onclick="location.assign('/')"
+          style="cursor: pointer;"
             class="amazon-logo"
             src="{{url_for('static', filename = 'assets/amazon.png')}}"
             alt=""
@@ -50,7 +52,7 @@
             <div class="blank"></div>
           </div>
           <div class="register-btn">
-            <button onclick="location.assign('/register')">
+            <button onclick="location.assign('/register')" >
               Create your Amazon account
             </button>
           </div>

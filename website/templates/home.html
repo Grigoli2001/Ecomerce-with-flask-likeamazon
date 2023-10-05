@@ -16,7 +16,6 @@
   </head>
   <body>
     <nav>
-    
       <div onclick="location.assign('/')" class="logo">
         <img
           class="amazon-logo"
@@ -50,7 +49,7 @@
           alt=""
         /><span>EN</span>
       </div>
-      <div onclick="location.assign('/orders')" class="account"><span>Your Orders</span></div>
+      <div id="yourAccount" class="account"><span>Your Account</span></div>
       <div class="cart">
         <div class="icon">
           <p>0</p>
@@ -59,14 +58,115 @@
         <p>Cart</p>
       </div>
     </nav>
-    <div class="bellow-nav">
-        <div class="all"><i class="fas fa-bars"></i>All</div>
-        <div class="todays-deals">Today's Deals</div>
-        <div class="customer-service">Customer Service</div>
-        <div class="registry">Registry</div>
-        <div class="gift-cards">Gift Cards</div>
-        <div class="sell">Sell</div>
+    <div id="yourAccountMenu" class="your-account">
+      <div class="menu">
+        <h2>Profile</h2>
+        <button>Profile</button>
+        <button>Orders</button>
+        <button onclick="location.assign('/logout')">Logout</button>
+      </div>
     </div>
+    <div class="bellow-nav">
+      <div class="all"><i class="fas fa-bars"></i>All</div>
+      <div class="todays-deals">Today's Deals</div>
+      <div class="customer-service">Customer Service</div>
+      <div class="registry">Registry</div>
+      <div class="gift-cards">Gift Cards</div>
+      <div class="sell">Sell</div>
+    </div>
+    <div class="content-wrapper">
+      <div class="carousel-container">
 
+        <div class="carrousel-wrapper">
+          <div class="carousel-slide">
+          <img class="carrousel-img" src="{{url_for('static', filename = 'assets/1.jpg')}}" alt="Image 1" />
+        </div>
+        <div class="carousel-slide">
+          <img class="carrousel-img" src="{{url_for('static', filename = 'assets/2.jpg')}}" alt="Image 2" />
+        </div>
+        <div class="carousel-slide">
+          <img class="carrousel-img" src="image3.jpg" alt="Image 3" />
+        </div>
+        <div class="carousel-slide">
+          <img class="carrousel-img" src="image4.jpg" alt="Image 4" />
+        </div>
+      </div>
+      <button id="prevBtn" onclick="prevSlide()"><</button>
+      <button id="nextBtn" onclick="nextSlide()">></button>
+    </div>
+  </div>
+  <div class="product-cat-container">
+    <div class="product-cat-wrapper">
+      <div onclick="location.assign('/products/tech')">
+        <h2>Tech World</h2>
+        <img src="https://images.hindustantimes.com/tech/img/2023/06/27/1600x900/hqdefault_1687873008913_1687873389465.jpg" alt="">
+      </div>
+      <div onclick="location.assign('/products/fashion')" >
+        <h2>Fashion</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Milagros_Schmoll3.jpg" alt="">
+      </div>
+      <div onclick="location.assign('/products/cuisine')">
+
+        <h2>Cuisine</h2>
+        <img src="https://media.home-design.schmidt/-/media/bynder/schmidt/2022/01/10/17/16/sch_neolis_cuisine_ambiance_a1/4x3-sch_neolis_cuisine_ambiance_a1.ashx?as=1&w=500&rev=e846236db3fe4c20b400635c0518b83b&hash=61648AA06512FFC45592C438208B4121" alt="">
+      </div>
+        <div onclick="location.assign('/products/tools')">
+          <h2>Tools</h2>
+          <img src="https://empire-s3-production.bobvila.com/articles/wp-content/uploads/2022/02/iStock-1297982665.jpg" alt="">
+        </div>
+    </div>
+  </div>
+    <script>
+      const yourAccount = document.getElementById("yourAccount")
+      const yourAccountMenu = document.getElementById("yourAccountMenu")
+      yourAccount.addEventListener('mouseover',   ()=>{
+        yourAccountMenu.style.display = 'block'
+      })
+      yourAccountMenu.addEventListener('mouseover',()=>{
+        yourAccountMenu.style.display='block'
+      })
+      yourAccount.addEventListener('mouseleave', ()=>{
+        yourAccountMenu.style.display ='none';
+        yourAccountMenu.addEventListener('mouseleave',()=>{
+          yourAccountMenu.style.display = "none";
+        })
+      })
+      let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Function to show the current slide
+// Function to show the current slide
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    // Calculate the translation value based on the current slide index
+    const translateXValue = 100 * (i - index);
+    // Apply the transform property to the slide
+    slide.style.transform = `translateX(${translateXValue}%)`;
+  });
+}
+
+// Function to show the previous slide
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Function to show the next slide
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Initial display
+showSlide(currentSlide);
+
+// Add event listeners for previous and next buttons
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+
+
+    </script>
   </body>
 </html>

@@ -3,6 +3,7 @@
 }
 body {
   margin: 0;
+  background-color: rgba(161, 214, 214,0.8);
 }
 nav {
   background-color: #131921;
@@ -77,6 +78,10 @@ nav {
   background-color: #febd69;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  cursor: pointer;
+}
+.search-form > button:hover{
+  opacity: 0.9;
 }
 .search > select {
   border-top-left-radius: 8px;
@@ -108,8 +113,46 @@ nav {
   align-self: center;
   height: 90%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.your-account{
+  position: absolute;
+  right: 8%;
+  top: 9%;
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  width: 200px;
+  /* height: 300px; */
+  height: auto;
+  transition: all 2s ease-in-out;
+  display: none;
+  margin: 0;
+}
+.menu{
+  display: flex;
+  transition: all 2s ease-in-out;
+  flex-direction: column;
+  z-index: 999;
+
+}
+.menu>h2{
+  text-align: center;
+  border-bottom:1px solid gray;
+  padding-bottom: 15px;
+  margin-bottom: 0  ;
+}
+.menu>button{
+  background: none;
+  border: none;
+  height: 30px;
+}
+.menu>button:hover{
+  background:#f4e7d3;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .account:hover{
     cursor: pointer;
@@ -174,4 +217,83 @@ nav {
 }
 .all>i{
     margin-right: 5px;
+}
+
+.carousel-container{
+  position: absolute;
+  z-index: -1;
+}
+.carrousel-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  transition: transform 0.5s ease-in-out;
+  text-align: center;
+}
+
+.carrousel-img {
+  max-width: 90%;
+  height: auto;
+  min-height: 500px;
+}
+
+#prevBtn,
+#nextBtn {
+  margin-top: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 8%;
+  height: 70px;
+  width: 40px;
+  background: none;
+  border: none;
+  font-size: 20pt;
+  color: white;
+}
+
+#prevBtn{
+  left: 0;
+}
+#nextBtn{
+  right: 0;
+}
+#prevBtn:hover,
+#nextBtn:hover{   
+   mix-blend-mode: color-burn;
+}
+.product-cat-container{
+  /* margin-top: 200px; */
+  width: 100%;
+  position: absolute;
+  top: 50%;
+
+  
+}
+.product-cat-wrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px ,1fr));
+  justify-items: center;
+  gap: 20px;
+
+}
+
+.product-cat-wrapper>div{
+  background-color: white;
+  height: 400px;
+  width: 300px;
+  text-align-last: center;
+  cursor: pointer;
+}
+
+.product-cat-wrapper>div>img{
+  object-fit: cover;
+  height:70% ;
+  width: 90%;
+  align-self: center;
+
 }
