@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='style/navbar.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='style/products.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>{{category}}</title>
+  </head>
+  <body>
+    <nav>
+      <div onclick="location.assign('/')" class="logo">
+        <img
+          class="amazon-logo"
+          src="{{ url_for('static', filename = 'assets/amazon1.png') }}"
+          alt=""
+        />
+      </div>
+      <div class="location">
+        <div class="loc-icon"><i class="fas fa-map-marker-alt loc"></i></div>
+        <div class="address">
+          <span style="color: rgb(158, 157, 157); font-size: small"
+            >Deliver to</span
+          >
+          <p>France</p>
+        </div>
+      </div>
+      <div class="search">
+        <select name="category" id="">
+          <option value="All">All</option>
+          <option value="Tech">Tech</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+        <form action="" class="search-form">
+          <input class="search-inp" type="search" name="search" id="" />
+          <button><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+      <div class="lang">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/US_flag_51_stars.svg/2560px-US_flag_51_stars.svg.png"
+          alt=""
+        /><span>EN</span>
+      </div>
+      <div id="yourAccount" class="account"><span>Your Account</span></div>
+      <div class="cart">
+        <div class="icon">
+          <p>0</p>
+          <i class="fas fa-shopping-cart shoppingcart"></i>
+        </div>
+        <p>Cart</p>
+      </div>
+    </nav>
+    <div id="yourAccountMenu" class="your-account">
+      <div class="menu">
+        <h2>Profile</h2>
+        <button>Profile</button>
+        <button>Orders</button>
+        <button onclick="location.assign('/logout')">Logout</button>
+      </div>
+    </div>
+    <div class="bellow-nav">
+      <div class="all"><i class="fas fa-bars"></i>All</div>
+      <div class="todays-deals">Today's Deals</div>
+      <div class="customer-service">Customer Service</div>
+      <div class="registry">Registry</div>
+      <div class="gift-cards">Gift Cards</div>
+      <div class="sell">Sell</div>
+    </div>
+    <h2 class="category">{{ category }}</h2>
+    <div class="content-wrapper">
+      <div class="sidebar">
+        <div class="sidebar-title">Department</div>
+        <div class="sidebar-content">
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Tech</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Furniture</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Clothing</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Books</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Sports</label>
+          </div>
+        </div>
+        <div class="sidebar-title">Price</div>
+        <div class="sidebar-content">
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">Under 25$</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">25$ to 50$</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">50$ to 100$</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">100$ to 200$</label>
+          </div>
+          <div class="sidebar-item">
+            <input type="checkbox" name="" id="" />
+            <label for="">200$ & Above</label>
+          </div>
+        </div>
+      </div>
+      <div class="products-wrapper">
+        {% for product in products %}
+        <div class="product">
+          <div class="product-img">
+            <img
+              onclick="location.assign('/products/{{category}}/{{product._id}}')"
+              width="200px"
+              src="{{product.img_address}}"
+              alt=""
+            />
+          </div>
+          <div class="product-info">
+            <div
+              onclick="location.assign('/products/{{category}}/{{product._id}}')"
+              class="product-name"
+            >
+              <h2>{{product.title}}</h2>
+            </div>
+            <div class="product-details">
+              <div class="price">
+                <span>20% Off</span>
+                <p>{{(product.price*0.8)|round(2)}}$</p>
+              </div>
+              <div class="delivery">
+                <p>
+                  Delivery <span style="font-weight: bold">Wed, Oct 25</span>
+                </p>
+                <p>Ships to France</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script>
+      const yourAccount = document.getElementById("yourAccount");
+      const yourAccountMenu = document.getElementById("yourAccountMenu");
+      yourAccount.addEventListener("mouseover", () => {
+        yourAccountMenu.style.display = "block";
+      });
+      yourAccountMenu.addEventListener("mouseover", () => {
+        yourAccountMenu.style.display = "block";
+      });
+      yourAccount.addEventListener("mouseleave", () => {
+        yourAccountMenu.style.display = "none";
+        yourAccountMenu.addEventListener("mouseleave", () => {
+          yourAccountMenu.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>

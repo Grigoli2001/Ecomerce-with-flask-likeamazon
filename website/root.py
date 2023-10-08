@@ -2,7 +2,7 @@ import os
 from flask import Blueprint, render_template,url_for, jsonify,g, request, redirect, flash, current_app
 import sqlite3
 from flask_login import login_required,current_user,logout_user
-from .mongoDB import client
+from .APIs.mongoDB import client
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from .APIs.forms import TweetForm, PostForm
@@ -66,8 +66,26 @@ def logout():
     return redirect(url_for('root.index'))
 
 db = client["amazon"]
-collection=db['products']
+collection_name="products"
+collection= db[collection_name]
 @root.route("/products/<category>")
 @login_required
 def productsByCategory(category):
-    return f"Products by {category}"
+    products = list(collection.find({"category":category}))
+    print(products)
+    print(category)
+    return render_template('products.html',products=products, category=category)
+
+@root.route("/products/<category>/<product_id>")
+@login_required
+def product(category,product_id):
+    product = collection.find_one({"_id":ObjectId(product_id)})
+    return render_template('product.html',product=product, category=category)
+
+@root.route("/products/<category>/<product_id>/add_to_cart")
+@login_required
+def add_to_cart(category,product_id):
+    product = collection.find_one({"_id":ObjectId(product_id)})
+    current_user.cart.append(product)
+    current_user.save()
+    return redirect(url_for("root.product",category=category,product_id=product_id))
