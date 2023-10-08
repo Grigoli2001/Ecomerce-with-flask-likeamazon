@@ -65,3 +65,9 @@ def logout():
     logout_user()
     return redirect(url_for('root.index'))
 
+db = client["amazon"]
+collection=db['products']
+@root.route("/products/<category>")
+@login_required
+def productsByCategory(category):
+    return f"Products by {category}"

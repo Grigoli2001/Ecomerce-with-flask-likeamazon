@@ -3,7 +3,6 @@ import os
 import sqlite3
 from ..root import conn_db
 from .forms import RegistrationForm
-from werkzeug.utils import secure_filename
 from .login import login_logic
 from flask_login import current_user
 register = Blueprint('register',__name__)
@@ -11,7 +10,6 @@ register = Blueprint('register',__name__)
 @register.route('/', methods = ['GET','POST'])
 def add_user_form():
     if current_user.is_authenticated:
-        print("authenticated")
         return redirect(url_for('root.home'))
         
     form = RegistrationForm()

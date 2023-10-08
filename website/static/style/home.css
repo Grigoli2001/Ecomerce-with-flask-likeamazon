@@ -3,7 +3,7 @@
 }
 body {
   margin: 0;
-  background-color: rgba(161, 214, 214,0.8);
+  background-color: rgba(161, 214, 214, 0.8);
 }
 nav {
   background-color: #131921;
@@ -80,7 +80,7 @@ nav {
   border-bottom-right-radius: 8px;
   cursor: pointer;
 }
-.search-form > button:hover{
+.search-form > button:hover {
   opacity: 0.9;
 }
 .search > select {
@@ -117,7 +117,7 @@ nav {
   align-items: center;
   justify-content: center;
 }
-.your-account{
+.your-account {
   position: absolute;
   right: 8%;
   top: 9%;
@@ -127,47 +127,65 @@ nav {
   width: 200px;
   /* height: 300px; */
   height: auto;
-  transition: all 2s ease-in-out;
+  /* transition: all 2s ease-in-out; */
   display: none;
   margin: 0;
 }
-.menu{
+/* Media query for larger screens */
+@media (min-height: 768px) {
+  .your-account {
+    top: 6%; /* Adjust the height for larger screens */
+  }
+}
+
+/* Media query for even larger screens */
+@media (min-height: 1024px) {
+  .your-account {
+    top: 5%; /* Adjust the height for even larger screens */
+  }
+}
+@media (min-height: 600px) {
+  .your-account {
+    top: 5%; /* Adjust the height for even larger screens */
+  }
+}
+
+.menu {
   display: flex;
   transition: all 2s ease-in-out;
   flex-direction: column;
   z-index: 999;
-
 }
-.menu>h2{
+.menu > h2 {
   text-align: center;
-  border-bottom:1px solid gray;
+  border-bottom: 1px solid gray;
   padding-bottom: 15px;
-  margin-bottom: 0  ;
+  margin-bottom: 0;
 }
-.menu>button{
+.menu > button {
   background: none;
   border: none;
   height: 30px;
 }
-.menu>button:hover{
-  background:#f4e7d3;
+.menu > button:hover {
+  background: #f4e7d3;
   text-decoration: underline;
   cursor: pointer;
 }
-.account:hover{
-    cursor: pointer;
+.account:hover {
+  cursor: pointer;
   border: 2px solid gray;
 }
 .cart {
-    height: 90%;
-    align-items: center;
-    justify-content: center;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   display: flex;
   cursor: pointer;
 }
-.cart:hover{
-    cursor: pointer;
+.cart:hover {
+  cursor: pointer;
   border: 2px solid gray;
 }
 .icon {
@@ -199,27 +217,27 @@ nav {
   color: white;
   font-size: xx-large;
 }
-.bellow-nav{
-    height: 40px;
-    background-color: #232f3e;
-    display: flex;
-    color: white;
-    align-items: center;
-    padding-left: 20px;
+.bellow-nav {
+  height: 40px;
+  background-color: #232f3e;
+  display: flex;
+  color: white;
+  align-items: center;
+  padding-left: 20px;
 }
 
-.bellow-nav>div{
-    margin-right: 10px;
+.bellow-nav > div {
+  margin-right: 10px;
 }
-.bellow-nav>div:hover{
-    cursor:pointer ;
-    color: cadetblue;
+.bellow-nav > div:hover {
+  cursor: pointer;
+  color: cadetblue;
 }
-.all>i{
-    margin-right: 5px;
+.all > i {
+  margin-right: 5px;
 }
 
-.carousel-container{
+.carousel-container {
   position: absolute;
   z-index: -1;
 }
@@ -256,33 +274,30 @@ nav {
   color: white;
 }
 
-#prevBtn{
+#prevBtn {
   left: 0;
 }
-#nextBtn{
+#nextBtn {
   right: 0;
 }
 #prevBtn:hover,
-#nextBtn:hover{   
-   mix-blend-mode: color-burn;
+#nextBtn:hover {
+  mix-blend-mode: color-burn;
 }
-.product-cat-container{
+.product-cat-container {
   /* margin-top: 200px; */
   width: 100%;
   position: absolute;
   top: 50%;
-
-  
 }
-.product-cat-wrapper{
+.product-cat-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px ,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-items: center;
   gap: 20px;
-
 }
 
-.product-cat-wrapper>div{
+.product-cat-wrapper > div {
   background-color: white;
   height: 400px;
   width: 300px;
@@ -290,10 +305,9 @@ nav {
   cursor: pointer;
 }
 
-.product-cat-wrapper>div>img{
+.product-cat-wrapper > div > img {
   object-fit: cover;
-  height:70% ;
+  height: 70%;
   width: 90%;
   align-self: center;
-
 }
