@@ -77,7 +77,7 @@
       <div class="gift-cards">Gift Cards</div>
       <div class="sell">Sell</div>
     </div>
-    <p class="back">back to results</p>
+    <p class="back" onclick="history.back()">< back to results</p>
     <div class="content-wrapper">
       <div class="image">
         <ul>
@@ -87,6 +87,11 @@
       </div>
       <div class="product-info">
         <h2>{{product.title}}</h2>
+        <img
+          src="https://www.bebolddigital.com/hs-fs/hubfs/ACBadge_1900px.png?width=1902&height=360&name=ACBadge_1900px.png"
+          alt=""
+        />
+        <span>1K+ bought in past month</span>
         <div class="price">
           <div class="current-price-wrapper">
             <p class="discount">-20%</p>
@@ -95,10 +100,46 @@
           <p class="old-price">last price: {{product.price}}$</p>
         </div>
         <div class="description">
+          <p class="about">About this item</p>
           <p>{{product.description}}</p>
         </div>
       </div>
-      <div class="action-sidebar"></div>
+      <div class="action-sidebar">
+        <div class="sidebar-price">
+          <span>Buy New: </span>
+          <input type="radio" name="" id="" checked />
+          <p>{{(product.price*0.8)|round(2)}}$</p>
+        </div>
+        <p class="sidebar-text-gray">
+          No Import Fees Deposit & $18.38 Shipping to France
+        </p>
+        <p class="sidebar-delivery">
+          Delivery <span> Friday, October 20.</span> Order within
+          <span> 7 hrs 53 mins </span>
+        </p>
+        <p class="sidebar-delivery-2">
+          Or fastest delivery <span> Monday, October 16 </span>
+        </p>
+        <p class="sidebar-delivery-2">Deliver to France</p>
+        <h3>In Stock</h3>
+        <div class="action">
+          <select name="quantity" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <form action="">
+            <button class="addtocart-btn">Add to Cart</button>
+          </form>
+          <form action="">
+            <button class="buynow-btn">Buy Now</button>
+          </form>
+        </div>
+        <p class="last-part"><span>Payment</span> Secure Transaction</p>
+        <p class="last-part"><span>Amazon Delivered</span> Warranty</p>
+        <p class="last-part"><span>Ships From</span> Amazon.com</p>
+      </div>
     </div>
   </body>
 </html>
