@@ -53,7 +53,7 @@
         /><span>EN</span>
       </div>
       <div id="yourAccount" class="account"><span>Your Account</span></div>
-      <div class="cart">
+      <div class="cart" onclick="location.assign('/cart')">
         <div class="icon">
           <p>0</p>
           <i class="fas fa-shopping-cart shoppingcart"></i>
@@ -163,21 +163,6 @@
       </div>
     </div>
 
-    <script>
-      const yourAccount = document.getElementById("yourAccount");
-      const yourAccountMenu = document.getElementById("yourAccountMenu");
-      yourAccount.addEventListener("mouseover", () => {
-        yourAccountMenu.style.display = "block";
-      });
-      yourAccountMenu.addEventListener("mouseover", () => {
-        yourAccountMenu.style.display = "block";
-      });
-      yourAccount.addEventListener("mouseleave", () => {
-        yourAccountMenu.style.display = "none";
-        yourAccountMenu.addEventListener("mouseleave", () => {
-          yourAccountMenu.style.display = "none";
-        });
-      });
-    </script>
+    <script src="{{url_for('static', filename='scripts/navbar.js')}}"></script>
   </body>
 </html>

@@ -24,6 +24,11 @@ class User(UserMixin):
          return True
     def get_id(self):
          return self.id
+    def __repr__(self):
+        return '<User %r>' % (self.username)
+    def get_cart(self):
+        return self.cart
+
 
 
 @login_manager.user_loader

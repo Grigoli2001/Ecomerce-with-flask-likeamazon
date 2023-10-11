@@ -53,7 +53,7 @@
         /><span>EN</span>
       </div>
       <div id="yourAccount" class="account"><span>Your Account</span></div>
-      <div class="cart">
+      <div class="cart" onclick="location.assign('/cart')">
         <div class="icon">
           <p>0</p>
           <i class="fas fa-shopping-cart shoppingcart"></i>
@@ -121,18 +121,37 @@
           Or fastest delivery <span> Monday, October 16 </span>
         </p>
         <p class="sidebar-delivery-2">Deliver to France</p>
-        <h3>In Stock</h3>
+        <h3>
+          <span style="color: rgb(0, 0, 102)"
+            >{{product.amount_available}}</span
+          >
+          In Stock
+        </h3>
         <div class="action">
-          <select name="quantity" id="">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+          <select name="quantity" id="quantity-select">
+            {% for i in range(1, product.amount_available+1) %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
           </select>
-          <form action="">
+          <form
+            action="/products/{{category}}/{{product._id}}/add_to_cart"
+            method="post"
+          >
+            <input
+              type="hidden"
+              name="quantity"
+              id="quantity-input"
+              value="1"
+            />
             <button class="addtocart-btn">Add to Cart</button>
           </form>
           <form action="">
+            <input
+              type="hidden"
+              name="quantity"
+              id="quantity-input1"
+              value="1"
+            />
             <button class="buynow-btn">Buy Now</button>
           </form>
         </div>
@@ -141,5 +160,16 @@
         <p class="last-part"><span>Ships From</span> Amazon.com</p>
       </div>
     </div>
+    <script>
+      var select = document.getElementById("quantity-select");
+      function setQuantity() {
+        var quantity = select.options[select.selectedIndex].value;
+        document.getElementById("quantity-input").value = quantity;
+        document.getElementById("quantity-input1").value = quantity;
+        console.log(quantity);
+      }
+      select.addEventListener("change", setQuantity);
+    </script>
+    <script src="{{url_for('static', filename='scripts/navbar.js')}}"></script>
   </body>
 </html>

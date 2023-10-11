@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename = 'style/navbar.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename = 'style/cart.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div onclick="location.assign('/')" class="logo">
+        <img
+          class="amazon-logo"
+          src="{{ url_for('static', filename = 'assets/amazon1.png') }}"
+          alt=""
+        />
+      </div>
+      <div class="location">
+        <div class="loc-icon"><i class="fas fa-map-marker-alt loc"></i></div>
+        <div class="address">
+          <span style="color: rgb(158, 157, 157); font-size: small"
+            >Deliver to</span
+          >
+          <p>France</p>
+        </div>
+      </div>
+      <div class="search">
+        <select name="category" id="">
+          <option value="All">All</option>
+          <option value="Tech">Tech</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+        <form action="" class="search-form">
+          <input class="search-inp" type="search" name="search" id="" />
+          <button><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+      <div class="lang">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/US_flag_51_stars.svg/2560px-US_flag_51_stars.svg.png"
+          alt=""
+        /><span>EN</span>
+      </div>
+      <div id="yourAccount" class="account"><span>Your Account</span></div>
+      <div class="cart" onclick="location.assign('/cart')">
+        <div class="icon">
+          <p>{{cart.products|length}}</p>
+          <i class="fas fa-shopping-cart shoppingcart"></i>
+        </div>
+        <p>Cart</p>
+      </div>
+    </nav>
+    <div id="yourAccountMenu" class="your-account">
+      <div class="menu">
+        <h2>Profile</h2>
+        <button>Profile</button>
+        <button>Orders</button>
+        <button onclick="location.assign('/logout')">Logout</button>
+      </div>
+    </div>
+    <div class="bellow-nav">
+      <div class="all"><i class="fas fa-bars"></i>All</div>
+      <div class="todays-deals">Today's Deals</div>
+      <div class="customer-service">Customer Service</div>
+      <div class="registry">Registry</div>
+      <div class="gift-cards">Gift Cards</div>
+      <div class="sell">Sell</div>
+    </div>
+    <div class="content-wrapper">
+      <div class="product-wrapper">
+        <h2>Shopping Cart</h2>
+        {% for item in cart.products %}
+        <div class="product">
+          <div class="product-img">
+            <img src="{{item.img_address}}" alt="" />
+          </div>
+          <div class="product-info">
+            <p class="product-name">{{ item.title }}</p>
+            <p class="discount">-20% off</p>
+            <p class="product-price">{{ (item.price*0.8)|round(2) }}$</p>
+            <div class="action">
+              <form action="/cart/{{item._id}}/update_quantity" method="post">
+                <select
+                  class="quantity"
+                  name="quantity"
+                  id=""
+                  onchange="this.form.submit()"
+                >
+                  {% for i in range(1, item.amount_available + 1) %} {% if i ==
+                  item.quantity %}
+                  <option value="{{ i }}" selected>{{ i }}</option>
+                  {% else %}
+                  <option value="{{ i }}">{{ i }}</option>
+                  {% endif %} {% endfor %}
+                </select>
+              </form>
+              <a href="">Delete</a>
+              <a href="">Save for later</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <p class="total-price"></p>
+          Subtotal ({{ cart.products|length }} items):
+          <span>{{total_price|round(2)}}$</span>
+        </p>
+      </div>
+      <div class="sidebar">
+        <button>Proceed to checkout</button>
+      </div>
+    </div>
+
+    <script src="{{url_for('static', filename='scripts/navbar.js')}}"></script>
+  </body>
+</html>
