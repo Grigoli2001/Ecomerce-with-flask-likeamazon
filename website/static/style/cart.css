@@ -59,9 +59,6 @@ body {
   flex-direction: column;
   width: 100%;
 }
-.sidebar {
-  flex: 2;
-}
 .action {
   display: flex;
   flex-direction: row;
@@ -93,4 +90,54 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+}
+
+  .sidebar {
+    flex: 2;
+    background-color: white;
+    height: 200px;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .sb-txt{
+    font-size: 12px;
+    padding: 10px;
+    margin: 0;
+    
+    /* margin-left: 20px; */
+  }
+
+  .sb-txt >span{
+    color: green;
+  }
+
+.sb-total{
+  font-size: 20px;
+  padding: 10px;
+  margin: 0;
+  /* margin-left: 20px; */
+  width: 100%;
+}
+.sb-total>span{
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.checkout-btn{
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+.checkout-btn > button{
+  height: 30px;
+  width:100%;
+  border: 0;
+  background: #FFD814;
+  border-color: #FCD200;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+.checkout-btn > button:hover{
+  background-color: #FCD200;
+  cursor: pointer;
 }

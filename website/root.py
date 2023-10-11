@@ -3,14 +3,21 @@ from flask import Blueprint, render_template,url_for, jsonify,g, request, redire
 import sqlite3
 from flask_login import login_required,current_user,logout_user
 from .APIs.mongoDB import client
-from datetime import datetime
-from werkzeug.utils import secure_filename
-from .APIs.forms import TweetForm, PostForm
-from .APIs.cart_length import cart_length
 from bson import ObjectId
 
 # from .login import User
 root = Blueprint('root',__name__)
+
+def cart_length(id):
+    db = client["amazon"]
+    collection_name="cart"
+    collection= db[collection_name]
+    cart = collection.find_one({"user_id": id})
+    if cart:
+        return len(cart["products"])
+    else:
+        return 0
+
 
 @root.route('/')
 def index():
@@ -58,7 +65,8 @@ def show_users():
 @root.route('/home')
 @login_required
 def home():
-    return render_template('home.html')
+    cart_len = cart_length(current_user.id)
+    return render_template('home.html', cart_len=cart_len)
 @root.route("/logout")
 @login_required
 def logout():
@@ -72,15 +80,15 @@ collection= db[collection_name]
 @login_required
 def productsByCategory(category):
     products = list(collection.find({"category":category}))
-    print(products)
-    print(category)
-    return render_template('products.html',products=products, category=category)
+    cart_len = cart_length(current_user.id)
+    return render_template('products.html',products=products, category=category, cart_len=cart_len)
 
 @root.route("/products/<category>/<product_id>")
 @login_required
 def product(category,product_id):
     product = collection.find_one({"_id":ObjectId(product_id)})
-    return render_template('product.html',product=product, category=category)
+    cart_len = cart_length(current_user.id)
+    return render_template('product.html',product=product, category=category, cart_len=cart_len)
 
 @root.route("/products/<category>/<product_id>/add_to_cart", methods=["POST"])
 @login_required
@@ -135,7 +143,7 @@ def cart():
     cart = cart_collection.find_one({"user_id": current_user.id})
     total_price = 0
     for product in cart["products"]:
-        total_price += product["price"] * product["quantity"]
+        total_price += product["price"] * product["quantity"] *0.8
     return render_template('cart.html',cart=cart, total_price=total_price)
 
 @root.route("/cart/<product_id>/update_quantity", methods=["POST"])

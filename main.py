@@ -1,10 +1,17 @@
+from flask import g
+from flask_login import current_user
 from website import create_app
 from website.root import close_db
 import subprocess
 app = create_app()
+@app.before_request
+def before_request():
+    g.current_user = current_user
+
 @app.teardown_appcontext
 def app_teardown(exception):
     close_db(exception)
-subprocess.run(["python", "Ecomerce-with-flask-likeamazon\website\APIs\insert_products.py"])
+subprocess.run(["python", "website\APIs\insert_products.py"])
 if __name__ =='__main__':
     app.run(host="127.0.0.1",port=2000,debug=True)
+
