@@ -120,7 +120,7 @@ def add_to_cart(category,product_id):
         cart_collection.insert_one({"user_id": current_user.id, "products": [product]})
     return redirect(url_for("root.product",category=category,product_id=product_id))
 
-@root.route("/products/<product_id>/remove_from_cart", methods=["POST"])
+@root.route("/cart/<product_id>/remove_from_cart", methods=["POST", "GET"])
 @login_required
 def remove_from_cart(product_id):
     cart_collection = db["cart"]
@@ -141,6 +141,8 @@ def remove_from_cart(product_id):
 def cart():
     cart_collection = db["cart"]
     cart = cart_collection.find_one({"user_id": current_user.id})
+    if cart is None:
+        cart_collection.insert_one({"user_id": current_user.id, "products": []})
     total_price = 0
     for product in cart["products"]:
         total_price += product["price"] * product["quantity"] *0.8
@@ -160,3 +162,46 @@ def update_quantity(product_id):
                 cart_collection.update_one({"_id": cart["_id"]}, {"$set": {"products": cart["products"]}})
                 return redirect(url_for("root.cart"))
     return redirect(url_for("root.cart"))
+
+
+@root.route("/orders")
+@login_required
+def orders():
+    orders_collection = db["orders"]
+    orders = list(orders_collection.find({"user_id": current_user.id}))
+    return render_template('orders.html',orders=orders)
+
+
+# @root.route("/cart/<product_id>/checkout")
+# @login_required
+# def checkout(product_id):
+#     cart_collection = db["cart"]
+#     orders_collection = db["orders"]
+#     product_collection = db["products"]
+#     product = collection.find_one({"_id":ObjectId(product_id)})
+#     cart = cart_collection.find_one({"user_id": current_user.id})
+#     if cart:
+#         # Check if the product already exists in the cart
+#         for p in cart["products"]:
+#             if p["_id"] == product["_id"]:
+#                 # If it does, remove it
+#                 cart_collection.update_one({"_id": cart["_id"]}, {"$pull": {"products": {"_id": product["_id"]}}})
+#                 orders_collection.insert_one({"user_id": current_user.id, "products": [product]})
+#                 product_collection.update_one({"_id": product["_id"]}, {"$set": {"amount_available": product["amount_available"] - product["quantity"]}})
+#                 return redirect(url_for("root.cart"))
+#     return redirect(url_for("root.cart"))
+
+@root.route("/cart/checkout")
+@login_required
+def checkout():
+    cart_collection = db["cart"]
+    orders_collection = db["orders"]
+    product_collection = db["products"]
+    cart = cart_collection.find_one({"user_id": current_user.id})
+    if cart:
+        for product in cart["products"]:
+            product_collection.update_one({"_id": product["_id"]}, {"$set": {"amount_available": product["amount_available"] - product["quantity"]}})
+        orders_collection.insert_one({"user_id": current_user.id, "products": cart["products"]})
+        cart_collection.update_one({"user_id": current_user.id}, {"$set": {"products": []}})
+        
+    return redirect(url_for("root.home"))

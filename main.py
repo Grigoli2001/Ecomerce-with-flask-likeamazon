@@ -1,12 +1,8 @@
-from flask import g
-from flask_login import current_user
 from website import create_app
 from website.root import close_db
 import subprocess
 app = create_app()
-@app.before_request
-def before_request():
-    g.current_user = current_user
+
 
 @app.teardown_appcontext
 def app_teardown(exception):
